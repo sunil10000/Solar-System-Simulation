@@ -3,7 +3,10 @@ using System.Collections;
 
 public class ChangeLookAtTarget : MonoBehaviour {
 
+
+
 	public GameObject target; // the target that the camera should look at
+	public float scaleFOW;
 
 	void Start() {
 		if (target == null) 
@@ -18,6 +21,6 @@ public class ChangeLookAtTarget : MonoBehaviour {
 		// change the target of the LookAtTarget script to be this gameobject.
 		LookAtTarget.target = target;
 		// change the field of view on the perspective camera based on the distance from center of world, clamp it to a reasonable field of view
-        Camera.main.fieldOfView = Mathf.Clamp(60 * target.transform.localScale.x, 1, 100);
+        Camera.main.fieldOfView = Mathf.Clamp(scaleFOW * target.transform.localScale.x, 1, 100);
 	}
 }
